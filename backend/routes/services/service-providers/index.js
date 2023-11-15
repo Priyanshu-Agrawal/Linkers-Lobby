@@ -1,16 +1,16 @@
 const express = require('express');
-const serviceProviderRouter = express.Router();
+const router = express.Router();
 
 const ServiceProvider = require('./models/ServiceProvider');
 const User = require("../users/models/User");
 
-serviceProviderRouter.get('/', (req, res) => {
+router.get('/', (req, res) => {
     ServiceProvider.find({})
         .then(result => res.send(result.length ? result : 'No service providers found'))
         .catch(err => res.send(err));
 })
 
-serviceProviderRouter.post('/', (req, res) => {
+router.post('/', (req, res) => {
     saveServiceProvider(req)
         .then(r => {
             updateUserWithServiceProviderID(req, r)
@@ -30,4 +30,4 @@ const updateUserWithServiceProviderID = async (req, serviceProvider) => {
      return serviceProvider ;
 }
 
-module.exports = serviceProviderRouter;
+module.exports = router;

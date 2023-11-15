@@ -1,7 +1,7 @@
 const express = require('express');
-const apiRouter = express.Router();
+const router = express.Router();
 
-apiRouter.get('/', (req, res) => {
+router.get('/', (req, res) => {
     res.send('Hello API!');
 });
 
@@ -20,9 +20,9 @@ apiRouter.get('/', (req, res) => {
 *  - npm joi for validation
 */
 
-apiRouter.use('/categories', require('./services/categories/categories'))
-apiRouter.use('/users', require('./services/users/users'))
-apiRouter.use('/service-providers', require('./services/service-providers/service-providers'))
-apiRouter.use('/reviews', require('./services/reviews/reviews'))
+router.use('/categories', require('./services/categories'))
+router.use('/users', require('./services/users'))
+router.use('/service-providers', require('./services/service-providers'))
+router.use('/reviews', require('./services/reviews'))
 
-module.exports = apiRouter;
+module.exports = router;

@@ -74,14 +74,14 @@ The backend directory contains the server-side logic and APIs responsible for ha
 - [ ] **Location and Region Management:**
   - [ ] Work in Progress: Adding functionality for managing locations and regions.
 
-- [ ] **Cors Implementation:**
-  - [ ] Work in Progress: Implementing Cross-Origin Resource Sharing.
+- [x] **Cors Implementation:**
+  - [x] Implementing Cross-Origin Resource Sharing.
 
-- [ ] **Helmet Integration:**
-  - [ ] Work in Progress: Integrating Helmet for enhanced security.
+- [x] **Helmet Integration:**
+  - [x] Integrating Helmet for enhanced security.
 
-- [ ] **Babel Setup:**
-  - [ ] Work in Progress: Configuring Babel for cross-browser compatibility.
+- [x] **Babel Setup:**
+  - [x] Configuring Babel for cross-browser compatibility.
 
 - [ ] **Security Enhancements:**
   - [ ] Work in Progress: Implementing password hashing and salting.
@@ -91,14 +91,14 @@ The backend directory contains the server-side logic and APIs responsible for ha
 - [ ] **Token System Development:**
   - [ ] Work in Progress: Developing a robust token system.
 
-- [ ] **Logger Implementation:**
-  - [ ] Work in Progress: Integrating a logger for effective error tracking.
+- [x] **Logger Implementation:**
+  - [ ] Work in Progress: Improving the logger for effective error tracking and record handling.
 
 - [ ] **Cache Integration:**
   - [ ] Work in Progress: Implementing a caching system.
 
-- [ ] **Route Restructuring:**
-  - [ ] Work in Progress: Renaming each route file for better organization.
+- [x] **Route Restructuring:**
+  - [x] Renamed each route file for better organization.
 
 - [ ] **Validation Using Joi:**
   - [ ] Work in Progress: Integrating npm Joi for robust input validation.

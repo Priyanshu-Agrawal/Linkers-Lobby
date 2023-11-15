@@ -1,8 +1,8 @@
 const express = require('express');
-const usersRouter = express.Router();
+const router = express.Router();
 const User = require('./models/User');
 
-usersRouter.get('/', (req, res, next) => {
+router.get('/', (req, res, next) => {
     User.find({})
         .then(users => {
             res.send(users.length? users: 'No users found');
@@ -10,7 +10,7 @@ usersRouter.get('/', (req, res, next) => {
         .catch(next);
 })
 
-usersRouter.post('/', (req, res, next) => {
+router.post('/', (req, res, next) => {
     const user = new User(req.body);
     user.save()
         .then(user => {
@@ -19,14 +19,14 @@ usersRouter.post('/', (req, res, next) => {
         .catch(next);
 })
 
-usersRouter.get('/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     const user = await User.findById(req.params.id);
     res.send(user ?? 'No user found');
 })
 
-usersRouter.post('/:id', async (req, res) => {
+router.post('/:id', async (req, res) => {
     const user = await User.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true});
     res.send(user ?? 'No user found');
 })
 
-module.exports = usersRouter;
+module.exports = router;

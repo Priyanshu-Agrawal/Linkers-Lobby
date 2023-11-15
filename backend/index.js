@@ -1,11 +1,14 @@
 const bodyParser = require("express");
 const fs = require("fs");
-const apiRoutes = require('./routes/api')
 require('dotenv').config();
 const express = require("express");
+const helmet = require("helmet");
+const cors = require("cors");
 const app = express();
 
 app.use(bodyParser.json());
+app.use(helmet());
+app.use(cors());
 // app.use(app.static('public'));
 
 
@@ -19,7 +22,7 @@ app.use((req, res, next) => {
 })
 
 
-app.use('/api', apiRoutes);
+app.use('/api', require('./routes'));
 
 
 app.listen(process.env.PORT, () => {

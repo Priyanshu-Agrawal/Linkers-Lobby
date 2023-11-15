@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const categoriesRouter = express.Router();
+const router = express.Router();
 require('dotenv').config();
 const Category = require('./models/category');
 
@@ -15,7 +15,7 @@ mongoose.connect(process.env.MONGODB_URL)
     });
 
 
-categoriesRouter.get('/', (req, res, next) => {
+router.get('/', (req, res, next) => {
     Category.find({})
         .then((result) => {
            res.send(result.length ? result : 'No categories found')
@@ -23,7 +23,7 @@ categoriesRouter.get('/', (req, res, next) => {
         .catch(next)
 });
 
-categoriesRouter.post('/', (req, res, next) => {
+router.post('/', (req, res, next) => {
     const category = new Category(req.body);
     category.save()
         .then((result) => {
@@ -32,4 +32,4 @@ categoriesRouter.post('/', (req, res, next) => {
         .catch(next)
 })
 
-module.exports = categoriesRouter
+module.exports = router

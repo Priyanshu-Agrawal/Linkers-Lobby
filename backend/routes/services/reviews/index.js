@@ -1,14 +1,14 @@
 const express = require('express');
-const reviewsRouter = express.Router();
+const router = express.Router();
 const Review = require('./models/Review');
 
-reviewsRouter.get('/', (req, res) => {
+router.get('/', (req, res) => {
     Review.find({})
         .then(result => res.send(result.length ? result : 'No reviews found'))
         .catch(err => res.send(err));
 })
 
-reviewsRouter.post('/', (req, res) => {
+router.post('/', (req, res) => {
     const newReview = new Review(req.body);
     newReview.save()
         .then(r => {
@@ -16,6 +16,6 @@ reviewsRouter.post('/', (req, res) => {
     })
 })
 
-module.exports = reviewsRouter;
+module.exports = router;
 
 
