@@ -24,7 +24,7 @@ const ReviewsSchema = new mongoose.Schema({
     timestamps: true,
 })
 
-ReviewsSchema.post('save', async function(doc) {
+ReviewsSchema.post('save', async (doc) => {
     await User.findByIdAndUpdate(doc.userId, { $push: { givenReviews: doc._id }})
     await ServiceProvider.findByIdAndUpdate(doc.serviceProviderId, { $push: { reviews: doc._id }})
 });

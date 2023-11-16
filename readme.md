@@ -30,6 +30,7 @@ The backend directory contains the server-side logic and APIs responsible for ha
 - [x] **API Development:**
   - [x] User registration API implemented to handle user sign-up.
   - [x] Dynamic update logic for nested fields in user profiles to accommodate flexible user data.
+  - [x] Implementing User authentication API to handle user logins.
   - [ ] Work in Progress: Future API routes.
 
 ### Backend Development (Week 3-4):
@@ -83,16 +84,18 @@ The backend directory contains the server-side logic and APIs responsible for ha
 - [x] **Babel Setup:**
   - [x] Configuring Babel for cross-browser compatibility.
 
-- [ ] **Security Enhancements:**
-  - [ ] Work in Progress: Implementing password hashing and salting.
+- [x] **Security Enhancements:**
+  - [x] Work in Progress: Implementing password hashing and salting.
 
 ### General Improvements
 
-- [ ] **Token System Development:**
-  - [ ] Work in Progress: Developing a robust token system.
+- [x] **Token System Development:**
+  - [x] Implemented a robust token system.
+  - [x]  Work in Progress: Improving token system for user authentication.
 
 - [x] **Logger Implementation:**
-  - [ ] Work in Progress: Improving the logger for effective error tracking and record handling.
+  - [x] Implemented the logger for effective error tracking and record handling using morgan
+  - [ ] Optional: Implemented the logger for effective error tracking and record handling using winston
 
 - [ ] **Cache Integration:**
   - [ ] Work in Progress: Implementing a caching system.

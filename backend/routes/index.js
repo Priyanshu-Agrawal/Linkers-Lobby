@@ -6,23 +6,19 @@ router.get('/', (req, res) => {
 });
 
 
-/* TODO:
+/* TODO Main Tasks:
 *  - Implement Google Authentication
+*  - Adding More routes and all delete routes
 *  - Add Location and Region Management functionality
-*  - Cors
-*  - Helmet
-*  - Babel
-*  - Password Hashing and Salting
-*  - token System
-*  - Implement a logger
-*  - Implement a cache
-*  - renaming each route files in all services routes folder to index.js instead of the service name so that we can use the service name folder as the route name
-*  - npm joi for validation
+*  - Implement a cache- npm joi for validation
+*  - Optional: logger using  winston
 */
+
 
 router.use('/categories', require('./services/categories'))
 router.use('/users', require('./services/users'))
 router.use('/service-providers', require('./services/service-providers'))
 router.use('/reviews', require('./services/reviews'))
-
+router.use('/register', require('./Auth/Register'))
+router.use('/login', require('./Auth/Login'))
 module.exports = router;

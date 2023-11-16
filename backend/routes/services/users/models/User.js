@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 // Define the Users schema
 const userSchema = new mongoose.Schema({
@@ -31,6 +32,20 @@ const userSchema = new mongoose.Schema({
         ref: 'Review',
     }],
 });
+
+//password hashing and salting
+
+userSchema.pre('save', async function (next) {
+    try{
+        const salt = await bcrypt.genSalt(+ process.env.SALT_ROUNDS);
+        this.password = await bcrypt.hash(this.password, salt); //hashed password //throwing error
+        next();
+    }catch (err){
+        console.log(err);
+        next(err);
+    }
+})
+
 
 // Create the Users model
 const User = mongoose.model('User', userSchema);

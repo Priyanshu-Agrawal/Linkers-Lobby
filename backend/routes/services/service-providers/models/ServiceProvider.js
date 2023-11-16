@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const User = require("../../users/models/User");
 
 // Define the ServiceProviders schema
 const serviceProviderSchema = new mongoose.Schema({
@@ -28,6 +29,11 @@ const serviceProviderSchema = new mongoose.Schema({
         ref: 'Review',
     }],
 });
+
+serviceProviderSchema.post(['save','findOneAndUpdate'], async function (doc, next) {
+    await User.findByIdAndUpdate(doc.userId, { serviceProvider: doc._id });
+    next();
+})
 
 // Create the ServiceProviders model
 const ServiceProvider = mongoose.model('ServiceProvider', serviceProviderSchema);
