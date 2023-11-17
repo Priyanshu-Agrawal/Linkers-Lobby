@@ -4,7 +4,22 @@ const ServiceProvider = require('./models/ServiceProvider');
 const authenticateUserToken = require("../../Auth/authenticateToken");
 
 router.get('/', (req, res) => {
-    ServiceProvider.find({})
+    const query = {};
+    if(req.query.category) {
+        query.category = req.query.category;
+    }
+    if (req.query.location) {
+        query.location = {
+            $near: {
+                $geometry: {
+                    type: 'Point',
+                    coordinates: [parseFloat(req.query.location.split(',')[0]), parseFloat(req.query.location.split(',')[1])],
+                },
+                $maxDistance: 10000, // Adjust the max distance as needed (in meters)
+            },
+        };
+    }
+    ServiceProvider.find(query)
         .then(result => res.send(result.length ? result : 'No service providers found'))
         .catch(err => res.send(err));
 })
@@ -38,14 +53,24 @@ router.post('/:serviceProviderId', authenticateUserToken, (req, res) => {
         .then(result => res.send(result))
 })
 
-// const saveServiceProvider =async (req) =>{
-//     const newServiceProvider =  new ServiceProvider(req.body);
-//     return await newServiceProvider.save();
-// }
-//
-// const updateUserWithServiceProviderID = async (req, serviceProvider) => {
-//      await User.findByIdAndUpdate(req.body.userId, { serviceProvider: serviceProvider._id });
-//      return serviceProvider ;
-// }
+const mumbaiLocation = {
+    type: 'Point',
+    coordinates: [72.8777, 19.0760],
+};
 
+router.get('/mumbai',  (req, res) => {
+    ServiceProvider.find({
+        location: {
+            $near: {
+                $geometry: mumbaiLocation,
+                $maxDistance: 10000,
+            },
+        },
+    })
+        .then(result => res.send(result))
+        .catch(err => {
+            console.error('Error in MongoDB query:', err);
+            res.status(400).send(err);
+        });
+})
 module.exports = router;

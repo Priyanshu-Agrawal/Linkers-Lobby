@@ -14,6 +14,16 @@ const serviceProviderSchema = new mongoose.Schema({
         ref: 'Category',
         required: true,
     },
+    location: {
+        type: {
+            type: String,
+            default: 'Point',
+        },
+        coordinates: {
+            type: [Number],
+            default: [0, 0],
+        },
+    },
     services: [{
         type: String,
         required: true,
@@ -29,6 +39,9 @@ const serviceProviderSchema = new mongoose.Schema({
         ref: 'Review',
     }],
 });
+
+
+serviceProviderSchema.index({ location: '2dsphere' });
 
 serviceProviderSchema.post(['save','findOneAndUpdate'], async function (doc, next) {
     await User.findByIdAndUpdate(doc.userId, { serviceProvider: doc._id });

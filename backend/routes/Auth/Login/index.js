@@ -15,7 +15,7 @@ router.post('/', async (req, res, next) => {
 		*  -Opional - Sending token inside cookie.
 		*  -Opional - Sending token inside user object itself.
 		*  -Using token expiring time and refresh token.
-		* */
+		*/
 		res.send({user, token});
 	} catch (e) {
 		console.log("error", e);

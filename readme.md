@@ -69,29 +69,34 @@ The backend directory contains the server-side logic and APIs responsible for ha
 
 ### Backend Improvements
 
-- [ ] **Implement Google Authentication:**
-  - [ ] Work in Progress: Integrating Google user authentication.
+- [x] **Implement Google Authentication:**
+  - [x] Integrated Google user authentication.
+  - 
+- [x] **Service Provider Dynamic Route:**
+  - [x] Work in Progress: Implementing dynamic route for service provider to have various query parameters to filter results. 
 
-- [ ] **Location and Region Management:**
-  - [ ] Work in Progress: Adding functionality for managing locations and regions.
+- [x] **Location and Region Management:**
+  - [x] Implemented APIs for location and region management.
+  - [ ] Work in Progress: Improving functionality for managing locations and regions.
+  - [ ] Work in Progress: Integrating Google Maps Geo Coding API for location management.
 
 - [x] **Cors Implementation:**
-  - [x] Implementing Cross-Origin Resource Sharing.
+  - [x] Implemented Cross-Origin Resource Sharing.
 
 - [x] **Helmet Integration:**
-  - [x] Integrating Helmet for enhanced security.
+  - [x] Integrated Helmet for enhanced security.
 
 - [x] **Babel Setup:**
-  - [x] Configuring Babel for cross-browser compatibility.
+  - [x] Configured Babel for cross-browser compatibility.
 
 - [x] **Security Enhancements:**
-  - [x] Work in Progress: Implementing password hashing and salting.
+  - [x] Implemented password hashing and salting.
 
 ### General Improvements
 
 - [x] **Token System Development:**
   - [x] Implemented a robust token system.
-  - [x]  Work in Progress: Improving token system for user authentication.
+  - [ ]  Work in Progress: Improving token system for user authentication.
 
 - [x] **Logger Implementation:**
   - [x] Implemented the logger for effective error tracking and record handling using morgan
