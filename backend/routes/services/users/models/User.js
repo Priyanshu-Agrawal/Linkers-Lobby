@@ -21,6 +21,10 @@ const userSchema = new mongoose.Schema({
         // Additional profile information can be added here
         type: Object,
     },
+    bookings: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Booking',
+    }],
     serviceProvider: {
         // Reference to the ServiceProviders collection
         type: mongoose.Schema.Types.ObjectId,

@@ -71,7 +71,6 @@ The backend directory contains the server-side logic and APIs responsible for ha
 
 - [x] **Implement Google Authentication:**
   - [x] Integrated Google user authentication.
-  - 
 - [x] **Service Provider Dynamic Route:**
   - [x] Work in Progress: Implementing dynamic route for service provider to have various query parameters to filter results. 
 

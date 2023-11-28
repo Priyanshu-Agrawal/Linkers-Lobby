@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const User  =  require("../../users/models/User");
 const ServiceProvider = require("../../service-providers/models/ServiceProvider");
 
-const ReviewsSchema = new mongoose.Schema({
+const ReviewSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
@@ -24,11 +24,47 @@ const ReviewsSchema = new mongoose.Schema({
     timestamps: true,
 })
 
-ReviewsSchema.post('save', async (doc) => {
-    await User.findByIdAndUpdate(doc.userId, { $push: { givenReviews: doc._id }})
-    await ServiceProvider.findByIdAndUpdate(doc.serviceProviderId, { $push: { reviews: doc._id }})
+
+ReviewSchema.index({ serviceProviderId: 1, userId: 1}, { unique: true });
+
+ReviewSchema.pre('save', async function (next) {
+    try{
+        const review = this;
+        const serviceProvider = await ServiceProvider.findById(review.serviceProviderId);
+        const user = await User.findById(review.userId);
+        const existingReview = await Review.findOne({
+            userId: review.userId,
+            serviceProviderId: review.serviceProviderId,
+        });
+        if(serviceProvider && user && !existingReview) {
+            next();
+        } else{
+            const error = new Error(`Invalid ${!serviceProvider ? "Service Provider" : !user ? "User" : "Review"}`);
+            error.name = "ValidationError";
+            next(error);
+        }
+    }catch (err) {
+        console.log(err)
+        next(err)
+    }
+})
+
+ReviewSchema.post('save', async function (doc) {
+    const session = await Review.startSession();
+    session.startTransaction();
+    try {
+        await User.findByIdAndUpdate(doc.userId, { $push: { givenReviews: doc._id }})
+        await ServiceProvider.findByIdAndUpdate(doc.serviceProviderId, { $push: { reviews: doc._id }})
+        await session.commitTransaction();
+    }catch (err) {
+        await session.abortTransaction();
+        console.log(err)
+        await doc.remove();
+    }finally {
+        await session.endSession();
+    }
 });
 
-const Review = mongoose.model("Reviews", ReviewsSchema);
+const Review = mongoose.model("Review", ReviewSchema);
 
 module.exports = Review;
