@@ -68,6 +68,11 @@ const Register = () => {
 			
 			axios.post('http://localhost:8000/api/register', newUser).then((res) => {
 				console.log(res);
+				if(res.data.success) {
+					localStorage.setItem('user', JSON.stringify(res.data.user));
+					Cookies.set('token', res.data.token);
+					window.location = '/';
+				}
 			}).catch((err) => {
 				console.log(err);
 			})

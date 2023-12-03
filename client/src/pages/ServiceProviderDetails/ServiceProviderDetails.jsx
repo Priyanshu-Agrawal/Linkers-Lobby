@@ -61,7 +61,7 @@ const ServiceProviderDetails = () => {
 						</div>
 					</div>
 					<div className={"right"}>
-						<div className={"title"}>
+						<div className={"hero"}>
 							<h1>{details.name}</h1>
 							<p>{details.category.name}</p>
 						</div>
@@ -84,7 +84,7 @@ const ServiceProviderDetails = () => {
 							<div className={"service-card"} key={index}>
 								<p className={"card-header"}>{service.name}</p>
 								<p className={"card-body"}>{service.description}</p>
-								<p className={"card-footer"}>{service.price}</p>
+								<p className={"card-footer"}><span>{service.price}</span></p>
 							</div>
 						)
 						)}

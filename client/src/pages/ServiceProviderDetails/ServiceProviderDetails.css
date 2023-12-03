@@ -39,14 +39,14 @@
     justify-content: space-evenly;
 }
 
-.serviceProviderDetail .top-section  .title h1{
+.serviceProviderDetail .top-section  .hero h1{
     font-size: 2.0rem;
     font-weight: 600;
     color: var(--text-color);
     -webkit-text-stroke: 0.5px #000;
 }
 
-.serviceProviderDetail .top-section  .title p{
+.serviceProviderDetail .top-section  .hero p{
     font-size: 1.2rem;
     margin:5px 2px;
     font-style: italic;
@@ -78,6 +78,7 @@
     -webkit-text-stroke: 0.5px #000;
     margin-bottom: 15px;
 }
+
 
 .services-section .book-now-btn{
     width: 100%;
@@ -147,6 +148,14 @@
     text-align: center;
     padding: 10px 0 0;
     border-top: 1px solid rgba(255, 255, 255, 0.225);
+}
+
+.service-card .card-footer::before{
+    content: "₹";
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    padding-right: 2px;
 }
 
 .serviceProviderDetail .portfolio-section{

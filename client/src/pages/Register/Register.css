@@ -24,7 +24,7 @@
     border-bottom: 5px solid var(--accent2-color);
 }
 
-.register-page .form-card-header .title{
+.register-page .form-card-header .hero{
     flex-grow: 1;
     font-weight: 600;
 }
