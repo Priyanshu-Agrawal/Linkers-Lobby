@@ -1,6 +1,22 @@
 const mongoose = require('mongoose');
 const User = require("../../users/models/User");
 
+
+const servicesSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true,
+    },
+    price: {
+        type: Number,
+        required: true,
+    },
+});
+
 // Define the ServiceProviders schema
 const serviceProviderSchema = new mongoose.Schema({
     userId: {
@@ -8,6 +24,13 @@ const serviceProviderSchema = new mongoose.Schema({
         ref: 'User',
         required: true,
         unique: true,
+    },
+    name: {
+        type: String,
+        required: true,
+    },
+    phone: {
+        type: Number,
     },
     location: {
         type: {
@@ -24,10 +47,7 @@ const serviceProviderSchema = new mongoose.Schema({
         ref: 'Category',
         required: true,
     },
-    services: [{
-        type: String,
-        required: true,
-    }],
+    services: [servicesSchema],
     servicesBooked: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Booking',
@@ -46,13 +66,32 @@ const serviceProviderSchema = new mongoose.Schema({
 
 serviceProviderSchema.index({ location: '2dsphere' });
 
+serviceProviderSchema.pre('save', async function (next) {
+   const session = await ServiceProvider.startSession();
+    session.startTransaction();
+    try{
+        const user = await User.findById(this.userId);
+        if(user) {
+            next();
+        } else{
+            const error = new Error(`Invalid User`);
+            error.name = "ValidationError";
+            next(error);
+        }
+    }catch (err) {
+        console.log(err)
+        next(err)
+    }
+})
+
+
 serviceProviderSchema.post(['save','findOneAndUpdate'], async function (doc, next) {
-    !doc && next();
     const session = await ServiceProvider.startSession();
     session.startTransaction();
     try {
         await User.findByIdAndUpdate(doc.userId, {serviceProvider: doc._id})
         await session.commitTransaction();
+        console.log("User updated")
     }catch (err) {
         await session.abortTransaction();
         console.log(err)
@@ -60,6 +99,7 @@ serviceProviderSchema.post(['save','findOneAndUpdate'], async function (doc, nex
     }finally {
         await session.endSession();
     }
+    next();
 })
 
 // Create the ServiceProviders model

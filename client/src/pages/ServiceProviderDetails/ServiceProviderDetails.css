@@ -1,0 +1,274 @@
+/*making the page content and padding and margin and dimensions responsive */
+
+.serviceProviderDetail .page-content {
+    flex: 1;
+    background: var(--background-color);
+    flex-direction: row;
+    padding:  40px min(5%, 500px);
+}
+
+.serviceProviderDetail .top-section {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px min(5%, 500px) 40px;
+    border-bottom:1px solid rgba(0, 255, 178, 0.32);
+}
+
+
+.serviceProviderDetail  .top-section .left :is(div, img){
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: var(--accent2-color);
+    -webkit-backdrop-filter: blur(11px);
+    backdrop-filter: blur(11px);
+    border: 1px solid rgba(255, 255, 255, 0.225);
+}
+
+
+.serviceProviderDetail .top-section .right{
+    width: min(100%, 550px);
+    height:250px;
+    padding: 0 50px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.serviceProviderDetail .top-section  .title h1{
+    font-size: 2.0rem;
+    font-weight: 600;
+    color: var(--text-color);
+    -webkit-text-stroke: 0.5px #000;
+}
+
+.serviceProviderDetail .top-section  .title p{
+    font-size: 1.2rem;
+    margin:5px 2px;
+    font-style: italic;
+    font-weight: 400;
+    color: #fffc;
+}
+.serviceProviderDetail .top-section .details p {
+    display: flex;
+    align-items: center;
+    font-size: 1.05rem;
+}
+.serviceProviderDetail .top-section  .details p span{
+    font-weight: 400;
+    margin-right: 5px;
+}
+
+.services-section{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 40px min(5%, 500px);
+    border-bottom:1px solid rgba(0, 255, 178, 0.32);
+}
+.services-section > h2{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+    -webkit-text-stroke: 0.5px #000;
+    margin-bottom: 15px;
+}
+
+.services-section .book-now-btn{
+    width: 100%;
+    max-width: 500px;
+    align-self: center;
+    margin: 25px 15px 0;
+    padding: 20px 30px;
+    border-radius: 20px;
+    background: var(--accent2-color);
+    -webkit-backdrop-filter: blur(11px);
+    backdrop-filter: blur(11px);
+    border: 1px solid var(--secondary-color-light);
+    color: var(--text-color);
+}
+
+.services-card-deck{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+
+.services-card-deck .service-card{
+    width: 100%;
+    max-width: 250px;
+    height: 260px;
+    margin: 20px 15px;
+    padding: 20px;
+    border-radius: 20px;
+    background: var(--accent2-color);
+    -webkit-backdrop-filter: blur(11px);
+    backdrop-filter: blur(11px);
+    border: 1px solid rgba(255, 255, 255, 0.225);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.service-card .card-header{
+    width: 100%;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    padding: 0 0 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.225);
+}
+
+.service-card .card-body{
+    padding: 10px 15px;
+    overflow: auto;
+}
+
+.service-card .card-body::-webkit-scrollbar {
+    width: 2px;
+}
+
+.service-card .card-body::-webkit-scrollbar-track {
+    background: var(--secondary-color-light);
+    border-radius: 14px;
+}
+
+.service-card .card-footer{
+    width: 100%;
+    text-align: center;
+    padding: 10px 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.225);
+}
+
+.serviceProviderDetail .portfolio-section{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 40px min(5%, 500px);
+    border-bottom:1px solid rgba(0, 255, 178, 0.32);
+}
+
+.portfolio-section > h2{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+    -webkit-text-stroke: 0.5px #000;
+    margin-bottom: 15px;
+}
+
+.portfolio-card-deck{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.portfolio-card{
+    max-width: 350px;
+    max-height: 450px;
+    margin: 20px 25px;
+    overflow: clip;
+}
+
+.portfolio-card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.review-section{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 40px min(5%, 500px);
+    /*border-bottom:1px solid rgba(0, 255, 178, 0.32);*/
+}
+.review-section > h2{
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--text-color);
+    -webkit-text-stroke: 0.5px #000;
+    margin-bottom: 15px;
+}
+
+.reviews-cards-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.review-card{
+    width: 100%;
+    height: min(100%, 250px);
+    margin: 20px 15px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--secondary-color-light);
+}
+
+.review-card-header{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.review-card-header .review-card-user-profile{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--accent2-color);
+    -webkit-backdrop-filter: blur(11px);
+    backdrop-filter: blur(11px);
+    border: 1px solid rgba(255, 255, 255, 0.225);
+}
+
+.review-card-header .review-card-user-profile img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.review-card-header-right{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+.review-card-header .review-card-user-info{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+.review-card-user-review-title {
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--text-color);
+    padding: 0 10px;
+}
+
+.review-card-body{
+    flex-grow: 1;
+    padding: 15px 15px 0;
+    overflow: auto;
+}
+
+

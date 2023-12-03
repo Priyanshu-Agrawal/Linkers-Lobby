@@ -5,9 +5,14 @@ const authenticateUserToken  = require("../../Auth/authenticateToken");
 
 
 router.get('/', (req, res) => {
+    try{
     Booking.find({})
         .then(result => res.send(result.length ? result : 'No Bookings found'))
         .catch(err => res.send(err));
+    }catch (err) {
+        console.log(err)
+        res.status(500).send(err)
+    }
 })
 
 router.post('/', authenticateUserToken ,  async (req, res) => {
@@ -17,7 +22,17 @@ router.post('/', authenticateUserToken ,  async (req, res) => {
         res.send(booking)
     }catch (err) {
         console.log(err)
-        res.status(400).send(err)
+        res.status(500).send(err)
+    }
+})
+
+router.get('/:id', (req, res) => {
+    try {
+        Booking.findById(req.params.id)
+            .then(result => res.send(result ? result : 'No Booking found'))
+            .catch(err => res.send(err));
+    }catch (err) {
+        res.status(500).send(err)
     }
 })
 

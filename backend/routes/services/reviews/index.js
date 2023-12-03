@@ -21,6 +21,25 @@ router.post('/', authenticateUserToken ,  async (req, res) => {
     }
 })
 
+
+router.get('/:id', async (req, res) => {
+    try {
+        const review = await Review.findById(req.params.id);
+        res.send(review ?? 'No review found');
+    } catch (err) {
+        res.status(500).send(err);
+    }
+})
+
+router.post('/:id', authenticateUserToken , async (req, res) => {
+    try {
+        const review = await Review.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true});
+        res.send(review ?? 'No review found');
+    } catch (err) {
+        res.status(500).send(err);
+    }
+});
+
 module.exports = router;
 
 

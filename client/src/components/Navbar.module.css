@@ -1,0 +1,95 @@
+/* NavBar.css */
+.navbar {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    padding: 25px 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(0.25turn, var(--secondary-color), var(--accent2-color), var(--primary-color));
+    border-image-slice: 1;
+    overflow: visible;
+}
+
+.nav-brand {
+    color: transparent;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: -webkit-linear-gradient(var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+nav {
+    display: flex;
+}
+
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px;
+    font-weight: bold;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.5s ease;
+}
+
+.nav-link:hover {
+    color: transparent;
+    border-bottom: 2px solid var(--secondary-color);
+    /*background: -webkit-linear-gradient(var(--secondary-color), var(--primary-color));*/
+    background: -webkit-linear-gradient(160deg, var(--primary-color),var(--secondary-color), var(--primary-color));;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.nav-link :active {
+    border-bottom: 2px solid var(--primary-color);
+}
+
+
+/* Navbar.module.css */
+/* ... (previous styles) */
+
+.nav-link {
+    position: relative;
+}
+
+.sub-menu {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    background-color: var(--background-color);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 8px 8px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+}
+
+.sub-menu.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.sub-menu-item {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.sub-menu-item:hover {
+    background-color: var(--accent1-color);
+    color: var(--background-color);
+}

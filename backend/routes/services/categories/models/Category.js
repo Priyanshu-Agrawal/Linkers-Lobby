@@ -7,6 +7,10 @@ const categorySchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
+    providers: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'ServiceProvider',
+    }],
 });
 
 // Create the Categories model

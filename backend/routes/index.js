@@ -1,4 +1,5 @@
 import express from "express";
+import mongoose from "mongoose";
 
 const router = express.Router();
 
@@ -24,4 +25,15 @@ router.use('/bookings', require('./services/bookings'))
 router.use('/register', require('./Auth/Register'))
 router.use('/login', require('./Auth/Login'))
 router.use('/auth/google', require('./Auth/Google'))
+
+mongoose.connect(process.env.MONGODB_URL)
+	.then(() => {
+		console.log(`DB Connected`);
+		// console.log(result);
+	})
+	.catch((err) => {
+		console.error(`Connection Failed ${err}`);
+	});
+
+
 module.exports = router;

@@ -1,6 +1,27 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
+const profileSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+    },
+    phone: {
+        type: Number,
+        required: true,
+    },
+    location: {
+        type: {
+            type: String,
+            default: 'Point',
+        },
+        coordinates: {
+            type: [Number],
+            default: [0, 0],
+        },
+    }
+});
+
 // Define the Users schema
 const userSchema = new mongoose.Schema({
     username: {
@@ -17,10 +38,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    profile: {
-        // Additional profile information can be added here
-        type: Object,
-    },
+    profile: profileSchema,
     bookings: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Booking',

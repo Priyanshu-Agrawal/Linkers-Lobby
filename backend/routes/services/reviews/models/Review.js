@@ -3,10 +3,16 @@ const User  =  require("../../users/models/User");
 const ServiceProvider = require("../../service-providers/models/ServiceProvider");
 
 const ReviewSchema = new mongoose.Schema({
-    userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true,
+    client: {
+        name: {
+            type: String,
+            required: true,
+        },
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+            required: true,
+        }
     },
     serviceProviderId: {
         type: mongoose.Schema.Types.ObjectId,
@@ -14,6 +20,12 @@ const ReviewSchema = new mongoose.Schema({
         required: true,
     },
     rating: {
+        type: Number,
+        min: 1,
+        max: 5,
+        required: true,
+    },
+    review: {
         type: String,
         required: true,
     },

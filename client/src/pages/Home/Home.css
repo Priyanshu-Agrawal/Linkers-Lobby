@@ -1,0 +1,28 @@
+.container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 10px;
+}
+
+.container-left{
+  float: left;
+}
+
+.text{
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.header{
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+
+
+.container-right{
+  float: right;
+  overflow: hidden;
+}

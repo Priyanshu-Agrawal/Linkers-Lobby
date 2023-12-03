@@ -1,0 +1,69 @@
+:root{
+    --background-color: #1e2b3e;
+    --primary-color: #67ff94;
+    --secondary-color: #8effd2;
+    --primary-color-light: rgba(103, 255, 148, 0.2);
+    --secondary-color-light: rgba(142, 255, 210, 0.35);
+    --accent1-color: rgba(199, 141, 73, 0.47);
+    --accent1-color-transparent: rgba(199, 141, 73, 0.27);
+    --accent2-color: rgba(77, 178, 168, 0.29);
+    --text-color: #e7e7e7;
+    --almost-transparent: rgba(255, 255, 255, 0.225);
+    --almost-transparent-dark: rgba(0, 0, 0, 0.225);
+    --error-color: #ff6b6b;
+}
+
+/*:root{*/
+/*    --background-color: #1e2b3e;*/
+/*    --primary-color: #67ff94;*/
+/*    --secondary-color: #8effd2;*/
+/*    --accent1-color: rgba(199, 141, 73, 0.47);*/
+/*    --accent2-color: rgba(77, 178, 168, 0.29);*/
+/*    --text-color: #e7e7e7;*/
+/*}*/
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    min-height: 100vh;
+  /* Add more global styles as needed */
+    --sb-size: 5px;
+    scrollbar-color: var(--secondary-color)
+    var(--accent2-color);
+}
+
+body::-webkit-scrollbar {
+    width: var(--sb-size)
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--accent2-color);
+    border-radius: 14px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: var(--accent2-color);
+    border-radius: 14px;
+
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.page{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 100%;
+    background: var(--background-color);
+}

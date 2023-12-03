@@ -1,18 +1,8 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const router = express.Router();
 require('dotenv').config();
 const Category = require('./models/category');
 
-
-mongoose.connect(process.env.MONGODB_URL)
-    .then((result) => {
-        console.log(`DB Connected`);
-        // console.log(result);
-    })
-    .catch((err) => {
-        console.error(`Connection Failed ${err}`);
-    });
 
 
 router.get('/', (req, res, next) => {
@@ -31,5 +21,14 @@ router.post('/', (req, res, next) => {
     })
         .catch(next)
 })
+
+
+router.get('/:id', (req, res, next) => {
+    Category.findById(req.params.id)
+        .then((result) => {
+            res.send(result)
+        })
+        .catch(next)
+});
 
 module.exports = router
