@@ -1,3 +1,4 @@
+// Service Provider Details Page JSX
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import NavBar from "../../components/NavBar";
@@ -47,6 +48,11 @@ const ServiceProviderDetails = () => {
 		
 	}, [id]);
 	
+	const handleBooking = () => {
+		window.location = `/book/${id}`;
+	};
+	
+	
 	return (
 		<div className="page serviceProviderDetail">
 			<NavBar/>
@@ -89,7 +95,7 @@ const ServiceProviderDetails = () => {
 						)
 						)}
 					</div>
-					<button className={"book-now-btn"}>Book Now</button>
+					<button className={"book-now-btn"} onClick={handleBooking}>Book Now</button>
 				</div>
 				<div className={"portfolio-section"}>
 					<h2>Portfolio</h2>

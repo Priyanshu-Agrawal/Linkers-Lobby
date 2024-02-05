@@ -49,7 +49,7 @@ const Services = () => {
 	return (
 		<div className={"page"}>
 		<NavBar/>
-		<div className={"page-content"}>
+		<div>
 			<div className="page-header-container">
 				<div>
 					<h3 >List of Service Providers</h3>

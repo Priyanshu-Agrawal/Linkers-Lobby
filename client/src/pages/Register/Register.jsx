@@ -116,7 +116,7 @@ const Register = () => {
 									<label htmlFor="eula">I agree to the <Link className="btn-EULA" to="#">Terms and Conditions</Link> of Linker's Lobby</label>
 								</div>
 							</div>
-							<input className="form-input btn-submit" type="submit" value="Register"/>
+							<input className="form-input btn-submit" type="submit"  value="Register"/>
 						</div>
 					</form>
 				</div>

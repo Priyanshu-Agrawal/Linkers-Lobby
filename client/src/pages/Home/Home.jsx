@@ -108,7 +108,9 @@ const Home = () => {
                     <div>
                         <p>Ready to get started?</p>
                         <h2>Join <span>Linker's Lobby</span> Today<span>.</span></h2>
-                        <button className={"btn"}>Sign Up</button>
+                        <button className={"btn"} onClick={() => {window.location = '/register';}} >
+                            Sign Up
+                        </button>
                     </div>
                 </section>
             </div>

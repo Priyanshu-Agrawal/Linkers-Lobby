@@ -81,7 +81,6 @@ BookingSchema.pre('save', async function (next) {
     }
 })
 
-
 BookingSchema.post('save', async function (doc){
     const session = await Booking.startSession();
     session.startTransaction();
